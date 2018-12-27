@@ -6,6 +6,8 @@ module.exports = {
     siteUrl: `https://techynovice.com/`,
     social: {
       twitter: `jarvisluong`,
+      github: 'jarvisluong',
+      email: 'contact@luongdanghai.com',
     },
   },
   plugins: [

@@ -30,10 +30,11 @@ function Bio() {
             <p>
               Written by <strong>{author}</strong> who lives and works in
               Helsinki building things in his own passion.
-              {` `}
-              <a href={`https://twitter.com/${social.twitter}`}>
-                You should follow him on Twitter
-              </a>
+              {` `}I can be found on{' '}
+              <a href={`https://twitter.com/${social.twitter}`}>Twitter</a>,{' '}
+              <a href={`https://github.com/${social.github}`}>Github</a>. You
+              can contact me about the blog or just a chat{' '}
+              <a href={`mailto:${social.email}`}>here</a>
             </p>
           </div>
         )
@@ -56,6 +57,8 @@ const bioQuery = graphql`
         author
         social {
           twitter
+          github
+          email
         }
       }
     }
