@@ -32,7 +32,7 @@ export default function Footer() {
         rel="noopener noreferrer"
       >
         LinkedIn
-      </a>
+      </a>{' '}
       &bull;{' '}
       <a
         href="mailto:contact@luongdanghai.com"
