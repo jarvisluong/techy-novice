@@ -14,12 +14,10 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next, slug } = this.props.pageContext
-    const editUrl = `https://github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME}/edit/master/src/pages/${slug.replace(
-      /\//g,
-      ''
-    )}.md`
+    const editUrl =
+      'https://github.com/jarvisluong/techy-novice/tree/master/content/blog'
     const discussUrl = `https://mobile.twitter.com/search?q=${encodeURIComponent(
-      `https://techynovice.com${slug}`
+      `https://www.techynovice.com${slug}`
     )}`
 
     return (
