@@ -14,8 +14,7 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next, slug } = this.props.pageContext
-    const editUrl =
-      'https://github.com/jarvisluong/techy-novice/tree/master/content/blog'
+    const editUrl = `https://github.com/jarvisluong/techy-novice/edit/master/content/blog${slug}index.md`
     const discussUrl = `https://mobile.twitter.com/search?q=${encodeURIComponent(
       `https://www.techynovice.com${slug}`
     )}`
@@ -97,6 +96,9 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+      }
+      fields {
+        slug
       }
     }
   }
