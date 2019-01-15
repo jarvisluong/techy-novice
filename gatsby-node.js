@@ -2,7 +2,15 @@ const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
+
+  // Migrate from wordpress
+  createRedirect({
+    fromPath: '/2017/03/19/cach-gap-fork-mot-repository-tren-github/',
+    toPath: '/cach-gap-fork-mot-repository-tren-github/',
+    isPermanent: true,
+    redirectInBrowser: true,
+  })
 
   return new Promise((resolve, reject) => {
     const blogPost = path.resolve(`./src/templates/blog-post.js`)
