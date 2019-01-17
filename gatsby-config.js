@@ -9,6 +9,7 @@ module.exports = {
       github: 'jarvisluong',
       email: 'contact@luongdanghai.com',
     },
+    disqusShortname: 'techynovice',
   },
   plugins: [
     {

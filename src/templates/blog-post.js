@@ -6,6 +6,8 @@ import Layout from '../components/Layout'
 import SEO from '../components/seo'
 import { rhythm, scale } from '../utils/typography'
 
+import { DiscussionEmbed } from 'disqus-react'
+
 const GITHUB_USERNAME = 'jarvisluong'
 const GITHUB_REPO_NAME = 'techy-novice'
 
@@ -13,11 +15,17 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
+    const disqusShortname = this.props.data.site.siteMetadata.disqusShortname
     const { previous, next, slug } = this.props.pageContext
     const editUrl = `https://github.com/jarvisluong/techy-novice/edit/master/content/blog${slug}index.md`
     const discussUrl = `https://mobile.twitter.com/search?q=${encodeURIComponent(
       `https://www.techynovice.com${slug}`
     )}`
+
+    const disqusConfig = {
+      identifier: post.id,
+      title: post.frontmatter.title,
+    }
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -74,6 +82,7 @@ class BlogPostTemplate extends React.Component {
             )}
           </li>
         </ul>
+        <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
       </Layout>
     )
   }
@@ -87,6 +96,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        disqusShortname
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
