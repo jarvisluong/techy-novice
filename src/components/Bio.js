@@ -28,9 +28,8 @@ function Bio() {
               }}
             />
             <p>
-              Written by <strong>{author}</strong> who lives and works in
-              Helsinki building things in his own passion. You can chat with me
-              via{' '}
+              Written by <strong>{author}</strong>. I build and share with
+              passion. You can chat with me via{' '}
               <a
                 href="https://m.me/techynovice"
                 target="_blank"
