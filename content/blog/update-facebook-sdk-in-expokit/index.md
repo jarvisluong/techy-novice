@@ -23,5 +23,16 @@ corresponding to your SDK version. Make a branch out of that tag (you can find
 the instruction on how to do it
 [here](https://stackoverflow.com/questions/10940981/how-to-create-a-new-branch-from-a-tag)).
 Edit the file `ExpoKit.podspec` in the repo to upgrade `FBSDKCoreKit`,
-`FBSDKLoginKit` and `FBSDKShareKit` to your preferred Facebook SDK version. Run
-`pod update`. You have completed upgrading Facebook SDK for your ExpoKit app.
+`FBSDKLoginKit` and `FBSDKShareKit` to your preferred Facebook SDK version.
+Commit the changes to that branch, then create a git tag and push the changes
+and tag to github.
+
+In your own ExpoKit project, update your `Podfile` in `ios`
+directory for the pod `ExpoKit`:
+
+- Change `git` value to your own `git` address on
+  github, for example: `https://github.com/bankifyio/expo.git` (it has to point to
+  the git project, not the github repo page).
+- Change `tag` value to your own newly created tag.
+
+Run `pod update`. You have completed upgrading Facebook SDK for your ExpoKit app.
