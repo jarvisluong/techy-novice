@@ -95,6 +95,36 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        exclude: ['/amp/*'],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-amp`,
+      options: {
+        analytics: {
+          type: 'gtag',
+          dataCredentials: 'include',
+          config: {
+            vars: {
+              gtag_id: 'UA-89689359-3',
+              config: {
+                'UA-89689359-3': {
+                  page_location: '{{pathname}}',
+                },
+              },
+            },
+          },
+        },
+        canonicalBaseUrl: 'https://www.techynovice.com/',
+        components: ['amp-form'],
+        excludedPaths: ['/404*', '/', '/about'],
+        pathIdentifier: '/amp/',
+        relAmpHtmlPattern: '{{canonicalBaseUrl}}{{pathIdentifier}}{{pathname}}',
+        useAmpClientIdApi: true,
+      },
+    },
   ],
 }

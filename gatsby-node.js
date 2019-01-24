@@ -14,6 +14,7 @@ exports.createPages = ({ graphql, actions }) => {
 
   return new Promise((resolve, reject) => {
     const blogPost = path.resolve(`./src/templates/blog-post.js`)
+    const blogPostAmp = path.resolve(`./src/templates/blog-post.amp.js`)
     resolve(
       graphql(
         `
@@ -52,6 +53,16 @@ exports.createPages = ({ graphql, actions }) => {
           createPage({
             path: post.node.fields.slug,
             component: blogPost,
+            context: {
+              slug: post.node.fields.slug,
+              previous,
+              next,
+            },
+          })
+
+          createPage({
+            path: `/amp/${post.node.fields.slug}`,
+            component: blogPostAmp,
             context: {
               slug: post.node.fields.slug,
               previous,
