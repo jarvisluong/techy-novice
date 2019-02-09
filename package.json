@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "disqus-react": "^1.0.5",
-    "gatsby": "^2.0.76",
+    "gatsby": "^2.0.118",
     "gatsby-image": "^2.0.22",
     "gatsby-plugin-amp": "^0.1.26",
     "gatsby-plugin-feed": "^2.0.8",
