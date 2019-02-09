@@ -7,6 +7,7 @@ import SEO from '../components/seo'
 import { rhythm, scale } from '../utils/typography'
 
 import { DiscussionEmbed } from 'disqus-react'
+import Tag from '../components/Tag';
 
 const GITHUB_USERNAME = 'jarvisluong'
 const GITHUB_REPO_NAME = 'techy-novice'
@@ -16,6 +17,7 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const disqusShortname = this.props.data.site.siteMetadata.disqusShortname
+    const tags = this.props.data.markdownRemark.frontmatter.tags
     const { previous, next, slug } = this.props.pageContext
     const editUrl = `https://github.com/jarvisluong/techy-novice/edit/master/content/blog${slug}index.md`
     const discussUrl = `https://mobile.twitter.com/search?q=${encodeURIComponent(
@@ -41,6 +43,7 @@ class BlogPostTemplate extends React.Component {
         >
           {post.frontmatter.date}
         </p>
+        <p>{tags.map(tag => <Tag key={tag} tag={tag} />)}</p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <p>
           <a href={discussUrl} target="_blank" rel="noopener noreferrer">
@@ -106,6 +109,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        tags
       }
       fields {
         slug

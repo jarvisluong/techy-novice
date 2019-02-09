@@ -15,6 +15,7 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     const blogPost = path.resolve(`./src/templates/blog-post.js`)
     const blogPostAmp = path.resolve(`./src/templates/blog-post.amp.js`)
+    const tagTemplate = path.resolve('./src/templates/tag.js')
     resolve(
       graphql(
         `
@@ -30,6 +31,7 @@ exports.createPages = ({ graphql, actions }) => {
                   }
                   frontmatter {
                     title
+                    tags
                   }
                 }
               }
@@ -67,6 +69,29 @@ exports.createPages = ({ graphql, actions }) => {
               slug: post.node.fields.slug,
               previous,
               next,
+            },
+          })
+        })
+
+        // Create tag pages
+        let tags = []
+        // Iterate through each post, putting all found tags into `tags`
+        posts.forEach(edge => {
+          if (edge.node.frontmatter.tags) {
+            tags = tags.concat(edge.node.frontmatter.tags)
+          }
+        })
+        // Eliminate duplicate tags
+        tags = Array.from(new Set(tags))
+
+        // Make tag pages
+        tags.forEach(tag => {
+          createPage({
+            // Creating kebab case for tag link
+            path: `/tags/${tag.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\s+/g, '-').toLowerCase()}/`,
+            component: tagTemplate,
+            context: {
+              tag,
             },
           })
         })
