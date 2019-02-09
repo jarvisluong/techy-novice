@@ -4,6 +4,6 @@ import { rhythm } from '../utils/typography';
 
 export default function Tag({tag}) {
     return (
-        <Link to="/" style={{marginRight: rhythm(0.25)}}>#{tag}</Link>
+        <Link to={`/tags/${tag}`} style={{marginRight: rhythm(0.25)}}>#{tag}</Link>
     )
 }

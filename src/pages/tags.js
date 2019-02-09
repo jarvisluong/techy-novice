@@ -7,6 +7,7 @@ import kebabCase from 'lodash/kebabCase'
 // Components
 import { Helmet } from 'react-helmet'
 import { Link, graphql } from 'gatsby'
+import Layout from '../components/Layout'
 
 const AllTagsPage = ({
   data: {
@@ -15,22 +16,28 @@ const AllTagsPage = ({
       siteMetadata: { title },
     },
   },
+  location,
 }) => (
-  <div>
-    <Helmet title={title} />
+  <Layout location={location}>
     <div>
-      <h1>Tags</h1>
-      <ul>
-        {group.map(tag => (
-          <li key={tag.fieldValue}>
-            <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-              {tag.fieldValue} ({tag.totalCount})
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <Helmet title={title} />
+      <div>
+        <h1>Tags</h1>
+        <ul>
+          {group.map(tag => (
+            <li key={tag.fieldValue}>
+              <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+                {tag.fieldValue} ({tag.totalCount})
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <p>
+      <Link to="/">All Posts</Link>
+      </p>
     </div>
-  </div>
+  </Layout>
 )
 
 AllTagsPage.propTypes = {
