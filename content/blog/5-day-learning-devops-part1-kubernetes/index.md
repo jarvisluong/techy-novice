@@ -1,7 +1,7 @@
 ---
 title: '[Developer Journal] My 5-day-journey learning DevOps - Part 1:
 Understanding Kubernetes'
-data: '2019-02-09T13:50:39.599Z'
+date: '2019-02-09T13:50:39.599Z'
 tags: ['devops', 'docker', 'kubernetes', 'journal']
 ---
 
