@@ -1,6 +1,7 @@
 ---
 title: How to make a keyboard-aware chat view with KeyboardAvoidingView
 date: '2015-04-13T22:12:03.284Z'
+tags: ['how-to', 'react-native']
 ---
 
 You can directly try out the [snack](https://snack.expo.io/@jarvisluong/keyboard-avoiding-chat-input):

@@ -1,6 +1,7 @@
 ---
 title: Cách gắp (fork) một repository trên Github
 date: '2015-03-19T22:12:03.284Z'
+tags: ['how-to']
 ---
 
 Đây là bản Việt hoá của [link gốc](https://help.github.com/articles/fork-a-repo/) từ Github:

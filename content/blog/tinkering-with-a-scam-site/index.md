@@ -1,6 +1,7 @@
 ---
 title: Tinkering with a scam site
 date: '2019-01-05T18:55:27.956Z'
+tags: ['journal']
 ---
 
 I have always been curious about how a scam site is developed and delivered to the victims. During my holiday in Canada, my girlfriend told me about some scam SMS being sent to her and her friends. Hmm, this is my chance to do some experiments! So I asked her to forward me those SMSes. Those are the messages:

@@ -1,6 +1,7 @@
 ---
 title: 'Setting up JWT token refresh mechanism with axios'
 date: '2019-01-14T05:26:22.392Z'
+tags: ['how-to', 'javascript']
 ---
 
 > This blog post requires the reader having knowledge in JWT authentication, and the [axios](https://github.com/axios/axios) HTTP library of Javascript

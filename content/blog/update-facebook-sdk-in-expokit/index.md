@@ -1,6 +1,7 @@
 ---
 title: 'Update Facebook SDK in your ExpoKit project'
 date: '2019-01-24T14:23:16.481Z'
+tags: ['react-native', 'how-to']
 ---
 
 Recently, Facebook has required apps that are using Facebook SDK to update to

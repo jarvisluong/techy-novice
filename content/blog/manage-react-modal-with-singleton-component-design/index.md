@@ -1,6 +1,7 @@
 ---
 title: 'Managing react modals with singleton component design'
 date: '2019-01-08T18:54:10.523Z'
+tags: ['react', 'react-native', 'discussion']
 ---
 
 Controlling modals of all kinds (informational modals, custom alerts, image lightboxes, ...) across an application is a frustrating problem that we all face when developing apps. When the app is simple, it's sufficient to place a single `<Modal />` component and have a state to toggle it on/off. However, things get complicated when you have different places to present the same modal or different kinds of modal to display in your app.
