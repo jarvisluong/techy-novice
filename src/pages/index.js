@@ -5,6 +5,7 @@ import Bio from '../components/Bio'
 import Layout from '../components/Layout'
 import SEO from '../components/seo'
 import { rhythm } from '../utils/typography'
+import Tag from '../components/Tag';
 
 class BlogIndex extends React.Component {
   render() {
@@ -16,11 +17,12 @@ class BlogIndex extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
           title="All posts"
-          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+          keywords={[`blog`, `gatsby`, `javascript`, `react`, 'react native', 'expo', 'techy novice']}
         />
         <Bio />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
+          const {tags} = node.frontmatter
           return (
             <div key={node.fields.slug}>
               <h3
@@ -33,7 +35,8 @@ class BlogIndex extends React.Component {
                 </Link>
               </h3>
               <small>{node.frontmatter.date}</small>
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
+              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} style={{marginBottom: rhythm(!!tags ? 0.3 : 1)}} />
+              {!!tags && <p>{tags.map(tag => <Tag tag={tag} key={tag} />)}</p>}
             </div>
           )
         })}
@@ -61,6 +64,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
+            tags
           }
         }
       }
