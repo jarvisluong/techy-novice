@@ -5,6 +5,8 @@ date: '2019-02-09T13:50:39.599Z'
 tags: ['devops', 'docker', 'kubernetes', 'journal']
 ---
 
+![Kubenetes graph](./kubernetes.png)
+
 Glossary:
 * Ops (Operation): Automating the process of building and deploying applications
 * Kubernetes: An open-source multi-server setup developed by Google
