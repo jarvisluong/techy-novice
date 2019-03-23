@@ -4,6 +4,8 @@ date: '2019-03-23T12:51:16.606Z'
 tags: ['react-native', 'expo']
 ---
 
+![Expo+ReactNativeNavigation](./cover.png)
+
 #### <i>TL-DR: There is an [example](https://github.com/jarvisluong/react-native-navigation-with-unimodules) github project to get started.</i>
 
 > [Expo](https://expo.io) is a set of tools, libraries and services you can use to build native iOS and Android apps faster than ever before.
