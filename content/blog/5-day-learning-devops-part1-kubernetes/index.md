@@ -2,16 +2,18 @@
 title: '[Developer Journal] My 5-day-journey learning DevOps - Part 1:
 Understanding Kubernetes'
 date: '2019-02-09T13:50:39.599Z'
+type: 'blog'
 tags: ['devops', 'docker', 'kubernetes', 'journal']
 ---
 
 ![Kubenetes graph](./kubernetes.png)
 
 Glossary:
-* Ops (Operation): Automating the process of building and deploying applications
-* Kubernetes: An open-source multi-server setup developed by Google
-* Docker: A container platform which helps running application with different environments with ease.
-* VM: Virtual Machine
+
+- Ops (Operation): Automating the process of building and deploying applications
+- Kubernetes: An open-source multi-server setup developed by Google
+- Docker: A container platform which helps running application with different environments with ease.
+- VM: Virtual Machine
 
 Until last week I have no idea what Kubernetes is and how Docker works. However,
 in my workplace, I was then given an opportunity to do research on understanding
@@ -89,12 +91,11 @@ spec:
   selector:
     app: MyApp
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 9376
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
 ```
 
 Your application, or back-end code, with other services, will be deployed, run and managed as Docker containers split equally into the nodes by the master. Therefore we need to know Docker to use Kubernetes. This will be the next part of this series. I hope you enjoyed reading my learning journey :D.
 
 Happy deploying!
-

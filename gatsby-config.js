@@ -1,13 +1,13 @@
 module.exports = {
   siteMetadata: {
     title: `Techy Novice`,
-    author: `Luong Dang Hai`,
+    author: `Jarvis Luong`,
     description: `A blog where a tech geek wrote down his own findings`,
     siteUrl: `https://techynovice.com/`,
     social: {
       twitter: `jarvisluong`,
       github: 'jarvisluong',
-      email: 'contact@luongdanghai.com',
+      email: 'jarvisluong@gmail.com',
     },
     disqusShortname: 'techynovice',
   },
@@ -17,6 +17,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content/blog`,
         name: `blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/pages`,
+        name: `about`,
       },
     },
     {

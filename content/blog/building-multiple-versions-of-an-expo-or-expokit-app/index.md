@@ -2,6 +2,7 @@
 title: Building multiple version of an Expo app
 date: '2019-01-17T19:08:34.187Z'
 tags: ['react-native', 'how-to']
+type: 'blog'
 ---
 
 After working tirelessly to build your app in Expo, you are ready to bring your work to user testing. You then realize you need to have multiple build versions of your app. The possibility of multiple [`releaseChannel`](https://docs.expo.io/versions/latest/guides/release-channels#__next) from expo won't be fully helpful since each version may come with its own icon, name, configurations (different Facebook App Id, FCM token), and even package name when you want to publish those to AppStore/Play Store. Fortunately, this can be easily achieved with Expo. Let's jump right into the solution!

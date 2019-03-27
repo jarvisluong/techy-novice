@@ -2,6 +2,7 @@
 title: 'My 2018 Recap and 2019 Wishlist'
 date: '2018-12-31T13:05:00.471Z'
 tags: ['journal']
+type: 'blog'
 ---
 
 2018 was a monumental personal development year for me. This year, I was proud of myself because I learned, practiced and achieved many goals. Now it's time to look back.

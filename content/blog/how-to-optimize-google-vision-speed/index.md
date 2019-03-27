@@ -2,6 +2,7 @@
 title: How to optimize the speed of Google Vision API
 date: '2019-01-03T15:48:28.745Z'
 tags: ['how-to']
+type: 'blog'
 ---
 
 Google Vision API is an image content analysis online service where you can upload your image and Google's AI will then analyze it and return back to you the results of texts, objects it found on the image. you can visit this link to learn more: https://cloud.google.com/vision/ (they even have a live demo where you can directly try uploading one image and see what it can do.

@@ -2,6 +2,7 @@
 title: 'Using Expo Unimodules with React Native Navigation'
 date: '2019-03-23T12:51:16.606Z'
 tags: ['react-native', 'expo']
+type: 'blog'
 ---
 
 ![Expo+ReactNativeNavigation](./cover.png)

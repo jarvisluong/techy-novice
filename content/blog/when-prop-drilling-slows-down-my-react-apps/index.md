@@ -2,6 +2,7 @@
 title: 'When prop-drilling slows down my React apps'
 date: '2019-03-10T08:11:12.357Z'
 tags: ['react', 'javascript', 'redux']
+type: 'blog'
 ---
 
 ![Prop-drilling](./prop-drilling.jpg)

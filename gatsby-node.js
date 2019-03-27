@@ -1,6 +1,75 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
+function createBlogPosts(blogPosts, createPage) {
+  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const blogPostAmp = path.resolve(`./src/templates/blog-post.amp.js`)
+  const tagTemplate = path.resolve('./src/templates/tag.js')
+  blogPosts.forEach((post, index) => {
+    const previous =
+      index === blogPosts.length - 1 ? null : blogPosts[index + 1].node
+    const next = index === 0 ? null : blogPosts[index - 1].node
+
+    createPage({
+      path: post.node.fields.slug,
+      component: blogPost,
+      context: {
+        slug: post.node.fields.slug,
+        previous,
+        next,
+      },
+    })
+
+    createPage({
+      path: `/amp/${post.node.fields.slug}`,
+      component: blogPostAmp,
+      context: {
+        slug: post.node.fields.slug,
+        previous,
+        next,
+      },
+    })
+  })
+  // Create tag pages
+  let tags = []
+  // Iterate through each post, putting all found tags into `tags`
+  blogPosts.forEach(edge => {
+    if (edge.node.frontmatter.tags) {
+      tags = tags.concat(edge.node.frontmatter.tags)
+    }
+  })
+  // Eliminate duplicate tags
+  tags = Array.from(new Set(tags))
+
+  // Make tag pages
+  tags.forEach(tag => {
+    createPage({
+      // Creating kebab case for tag link
+      path: `/tags/${tag
+        .replace(/([a-z])([A-Z])/g, '$1-$2')
+        .replace(/\s+/g, '-')
+        .toLowerCase()}/`,
+      component: tagTemplate,
+      context: {
+        tag,
+      },
+    })
+  })
+}
+
+function createSinglePages(pages, createPage) {
+  const aboutPage = path.resolve(`./src/templates/about.js`)
+  pages.forEach(page => {
+    createPage({
+      path: page.node.fields.slug,
+      component: aboutPage,
+      context: {
+        slug: page.node.fields.slug,
+      },
+    })
+  })
+}
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions
 
@@ -13,9 +82,6 @@ exports.createPages = ({ graphql, actions }) => {
   })
 
   return new Promise((resolve, reject) => {
-    const blogPost = path.resolve(`./src/templates/blog-post.js`)
-    const blogPostAmp = path.resolve(`./src/templates/blog-post.amp.js`)
-    const tagTemplate = path.resolve('./src/templates/tag.js')
     resolve(
       graphql(
         `
@@ -32,6 +98,7 @@ exports.createPages = ({ graphql, actions }) => {
                   frontmatter {
                     title
                     tags
+                    type
                   }
                 }
               }
@@ -44,57 +111,15 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors)
         }
 
-        // Create blog posts pages.
-        const posts = result.data.allMarkdownRemark.edges
+        const blogPosts = result.data.allMarkdownRemark.edges.filter(
+          ({ node }) => node.frontmatter.type === 'blog'
+        )
+        const pages = result.data.allMarkdownRemark.edges.filter(
+          ({ node }) => node.frontmatter.type === 'page'
+        )
 
-        posts.forEach((post, index) => {
-          const previous =
-            index === posts.length - 1 ? null : posts[index + 1].node
-          const next = index === 0 ? null : posts[index - 1].node
-
-          createPage({
-            path: post.node.fields.slug,
-            component: blogPost,
-            context: {
-              slug: post.node.fields.slug,
-              previous,
-              next,
-            },
-          })
-
-          createPage({
-            path: `/amp/${post.node.fields.slug}`,
-            component: blogPostAmp,
-            context: {
-              slug: post.node.fields.slug,
-              previous,
-              next,
-            },
-          })
-        })
-
-        // Create tag pages
-        let tags = []
-        // Iterate through each post, putting all found tags into `tags`
-        posts.forEach(edge => {
-          if (edge.node.frontmatter.tags) {
-            tags = tags.concat(edge.node.frontmatter.tags)
-          }
-        })
-        // Eliminate duplicate tags
-        tags = Array.from(new Set(tags))
-
-        // Make tag pages
-        tags.forEach(tag => {
-          createPage({
-            // Creating kebab case for tag link
-            path: `/tags/${tag.replace(/([a-z])([A-Z])/g, '$1-$2').replace(/\s+/g, '-').toLowerCase()}/`,
-            component: tagTemplate,
-            context: {
-              tag,
-            },
-          })
-        })
+        createBlogPosts(blogPosts, createPage)
+        createSinglePages(pages, createPage)
       })
     )
   })
