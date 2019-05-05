@@ -38,9 +38,11 @@ I modify the content as below while still following the installation documentati
 ```
 self.moduleRegistryAdapter = [[UMModuleRegistryAdapter alloc] initWithModuleRegistryProvider:[[UMModuleRegistryProvider alloc] init]];
     NSURL *jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
-   [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions];
+   [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions bridgeManagerDelegate:self];
     return YES;
 ```
+
+> Notice that you need to add the option `bridgeManagerDelegate:self` to the bootstrap method, according to unimodules' [documentation](https://github.com/unimodules/react-native-unimodules#configure-ios)
 
 With that, I have completed the iOS linking process and then proceed to link the library to the Android project. It is pretty much similar to what react-native-navigation's documentation pointed out, with the following adjustments:
 
