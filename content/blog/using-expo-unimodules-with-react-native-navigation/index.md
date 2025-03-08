@@ -7,8 +7,6 @@ type: 'blog'
 
 ![Expo+ReactNativeNavigation](./cover.png)
 
-#### <i>TL-DR: There is an [example](https://github.com/jarvisluong/react-native-navigation-with-unimodules) github project to get started.</i>
-
 > [Expo](https://expo.io) is a set of tools, libraries and services you can use to build native iOS and Android apps faster than ever before.
 
 Ever since I found Expo and got started building mobile applications using Expo, I fall in love with how Expo's developers got the experience so slick and reliable, and I do not have to tackle with the native integration of lots of common native modules (such as Calendar, Location, Camera, Video, Fingerprint, etc.)

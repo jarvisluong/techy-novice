@@ -9,9 +9,6 @@ import { rhythm, scale } from '../utils/typography'
 import { DiscussionEmbed } from 'disqus-react'
 import Tag from '../components/Tag';
 
-const GITHUB_USERNAME = 'jarvisluong'
-const GITHUB_REPO_NAME = 'techy-novice'
-
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark

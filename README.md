@@ -1,1 +1,1 @@
-#### Jarvisluong's Personal Blog
+#### Techy Novice Personal Blog

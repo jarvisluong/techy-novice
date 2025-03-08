@@ -1,9 +1,9 @@
 {
-  "name": "jarvisluong-personal-blog",
+  "name": "techy-novice-blog",
   "private": true,
   "description": "A blog where a tech geek wrote down his own findings",
   "version": "0.1.0",
-  "author": "Jarvisluong <contact@luongdanghai.com>",
+  "author": "Techy Novice <techynovice.amulet273@passmail.com>",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
