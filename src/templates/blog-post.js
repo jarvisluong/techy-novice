@@ -18,11 +18,7 @@ class BlogPostTemplate extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title
     const disqusShortname = this.props.data.site.siteMetadata.disqusShortname
     const tags = this.props.data.markdownRemark.frontmatter.tags
-    const { previous, next, slug } = this.props.pageContext
-    const editUrl = `https://github.com/jarvisluong/techy-novice/edit/master/content/blog${slug}index.md`
-    const discussUrl = `https://mobile.twitter.com/search?q=${encodeURIComponent(
-      `https://www.techynovice.com${slug}`
-    )}`
+    const { previous, next } = this.props.pageContext
 
     const disqusConfig = {
       identifier: post.id,
@@ -45,15 +41,6 @@ class BlogPostTemplate extends React.Component {
         </p>
         <p>{tags.map(tag => <Tag key={tag} tag={tag} />)}</p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        <p>
-          <a href={discussUrl} target="_blank" rel="noopener noreferrer">
-            Discuss on Twitter
-          </a>
-          {` • `}
-          <a href={editUrl} target="_blank" rel="noopener noreferrer">
-            Edit on GitHub
-          </a>
-        </p>
         <hr
           style={{
             marginBottom: rhythm(1),

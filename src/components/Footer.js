@@ -11,31 +11,7 @@ export default function Footer() {
       }}
     >
       <a
-        href="https://mobile.twitter.com/jarvisluong"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Twitter
-      </a>{' '}
-      &bull;{' '}
-      <a
-        href="https://github.com/jarvisluong"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Github
-      </a>{' '}
-      &bull;{' '}
-      <a
-        href="https://www.linkedin.com/in/jarvisluong/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        LinkedIn
-      </a>{' '}
-      &bull;{' '}
-      <a
-        href="mailto:contact@luongdanghai.com"
+        href="mailto:techynovice.amulet273@passmail.com"
         target="_blank"
         rel="noopener noreferrer"
       >

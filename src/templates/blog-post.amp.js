@@ -9,11 +9,7 @@ class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
-    const { slug, previous, next } = this.props.pageContext
-    const editUrl = `https://github.com/jarvisluong/techy-novice/edit/master/content/blog${slug}index.md`
-    const discussUrl = `https://mobile.twitter.com/search?q=${encodeURIComponent(
-      `https://www.techynovice.com${slug}`
-    )}`
+    const { previous, next } = this.props.pageContext
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title={post.frontmatter.title} description={post.excerpt} />
@@ -29,15 +25,6 @@ class BlogPostTemplate extends React.Component {
           {post.frontmatter.date}
         </p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        <p>
-          <a href={discussUrl} target="_blank" rel="noopener noreferrer">
-            Discuss on Twitter
-          </a>
-          {` • `}
-          <a href={editUrl} target="_blank" rel="noopener noreferrer">
-            Edit on GitHub
-          </a>
-        </p>
         <hr
           style={{
             marginBottom: rhythm(1),

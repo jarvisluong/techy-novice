@@ -1,14 +1,9 @@
 module.exports = {
   siteMetadata: {
     title: `Techy Novice`,
-    author: `Jarvis Luong`,
+    author: `Techy Novice`,
     description: `A blog where a tech geek wrote down his own findings`,
     siteUrl: `https://techynovice.com/`,
-    social: {
-      twitter: `jarvisluong`,
-      github: 'jarvisluong',
-      email: 'jarvisluong@gmail.com',
-    },
     disqusShortname: 'techynovice',
   },
   plugins: [
