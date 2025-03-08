@@ -4,4 +4,5 @@ COPY . /app
 WORKDIR /app
 RUN yarn install
 RUN yarn build
-ENTRYPOINT [ "yarn", "gatsby", "serve"]
+# Keep the container running to copy the static build files out
+ENTRYPOINT ["tail", "-f", "/dev/null"]
