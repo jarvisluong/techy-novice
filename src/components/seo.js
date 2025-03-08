@@ -39,10 +39,6 @@ function SEO({ description, lang, meta, keywords, title }) {
                 content: `summary`,
               },
               {
-                name: `twitter:creator`,
-                content: data.site.siteMetadata.author,
-              },
-              {
                 name: `twitter:title`,
                 content: title,
               },
