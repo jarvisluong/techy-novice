@@ -16,6 +16,7 @@ jobs:
           docker build -t techy-novice -f Dockerfile.prod .
           docker run -d --name temp-container techy-novice
           docker cp temp-container:/app/public ./public
+          docker stop temp-container
           docker rm temp-container
 
       - name: Upload artifact
