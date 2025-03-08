@@ -14,7 +14,7 @@ jobs:
       - name: Build with Docker
         run: |
           docker build -t techy-novice -f Dockerfile.prod .
-          docker run --name temp-container techy-novice
+          docker run -d --name temp-container techy-novice
           docker cp temp-container:/app/public ./public
           docker rm temp-container
 
