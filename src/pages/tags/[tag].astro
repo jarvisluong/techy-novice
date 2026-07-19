@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { slugify } from '../../utils/slugify';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  const tagsByName = new Map<string, { tag: string; posts: typeof posts }>();
+  for (const post of posts) {
+    for (const tag of post.data.tags) {
+      const slug = slugify(tag);
+      const entry = tagsByName.get(slug) ?? { tag, posts: [] };
+      entry.posts.push(post);
+      tagsByName.set(slug, entry);
+    }
+  }
+
+  return [...tagsByName.entries()].map(([slug, { tag, posts: tagPosts }]) => ({
+    params: { tag: slug },
+    props: { tag, posts: tagPosts },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+const heading = `${posts.length} post${posts.length === 1 ? '' : 's'} tagged with "${tag}"`;
+---
+
+<BaseLayout title={`Posts tagged "${tag}"`}>
+  <h1>{heading}</h1>
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <a href={`/${post.id}/`}>{post.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+  <p><a href="/tags">All tags</a> &bull; <a href="/">All posts</a></p>
+</BaseLayout>

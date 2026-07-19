@@ -54,16 +54,9 @@ typings/
 # dotenv environment variables file
 .env
 
-# gatsby files
-.cache/
-public
+# astro build output
+dist/
+.astro/
 
 # Mac files
 .DS_Store
-
-# Yarn
-yarn-error.log
-.pnp/
-.pnp.js
-# Yarn Integrity file
-.yarn-integrity
