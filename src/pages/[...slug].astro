@@ -1,0 +1,46 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Bio from '../components/Bio.astro';
+import Tag from '../components/Tag.astro';
+import { formatDate } from '../utils/formatDate';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('blog')).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+  );
+
+  return posts.map((post, index) => ({
+    params: { slug: post.id },
+    props: {
+      post,
+      previous: posts[index + 1] ?? null,
+      next: posts[index - 1] ?? null,
+    },
+  }));
+}
+
+const { post, previous, next } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={post.data.title}>
+  <h1>{post.data.title}</h1>
+  <p><small>{formatDate(post.data.date)}</small></p>
+  <p>
+    {post.data.tags.map((tag) => (
+      <Tag tag={tag} />
+    ))}
+  </p>
+  <Content />
+  <hr />
+  <Bio />
+  <nav class="prev-next">
+    <span>
+      {previous && <a href={`/${previous.id}/`}>&larr; {previous.data.title}</a>}
+    </span>
+    <span>
+      {next && <a href={`/${next.id}/`}>{next.data.title} &rarr;</a>}
+    </span>
+  </nav>
+</BaseLayout>

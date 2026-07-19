@@ -1,0 +1,67 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'A blog where a tech geek wrote down his own findings',
+} = Astro.props;
+
+const pageTitle = title === 'Techy Novice' ? title : `${title} | Techy Novice`;
+const isHome = Astro.url.pathname === '/';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no"
+    />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/thinking_emoji.png" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Techy Novice"
+      href="/rss.xml"
+    />
+  </head>
+  <body>
+    <header>
+      {
+        isHome ? (
+          <h1>
+            <a href="/">Techy Novice</a>
+          </h1>
+        ) : (
+          <h3>
+            <a href="/">Techy Novice</a>
+          </h3>
+        )
+      }
+    </header>
+    <slot />
+    <footer>
+      <a
+        href="mailto:techynovice.amulet273@passmail.com"
+        target="_blank"
+        rel="noopener noreferrer">Email</a
+      >
+    </footer>
+  </body>
+</html>

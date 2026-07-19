@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Bio from '../components/Bio.astro';
+import Tag from '../components/Tag.astro';
+import { formatDate } from '../utils/formatDate';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout title="Techy Novice">
+  <Bio />
+  {
+    posts.map((post) => (
+      <article>
+        <h3>
+          <a href={`/${post.id}/`}>{post.data.title}</a>
+        </h3>
+        <small>{formatDate(post.data.date)}</small>
+        <p>
+          {post.data.tags.map((tag) => (
+            <Tag tag={tag} />
+          ))}
+        </p>
+      </article>
+    ))
+  }
+</BaseLayout>
